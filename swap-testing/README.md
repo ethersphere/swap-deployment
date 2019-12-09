@@ -1,4 +1,4 @@
-== Deployment of `swap-testing` cluster
+## Deployment of `swap-testing` cluster
 
 This folder contains the scripts for deploying the `swap-testing` private incentivized Swarm cluster.
 

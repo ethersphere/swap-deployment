@@ -1,4 +1,4 @@
-== Custom cluster deployment
+## Custom cluster deployment
 
 This folder contains scripts for the deployment of a custom incentivized private Swarm cluster.
 
@@ -8,12 +8,12 @@ The current node config version is compatible with the ganache instance deployed
 
 Should the ganache instance be changed (e.g. different contract data), most likely the ganache installation needs to be updated, resulting in a different contract address, which needs to be adjusted at the above flag.
 
-=== IMPORTANT
+### IMPORTANT
 A custom deployment is meant for an individual test only, for example before merging to `master`, or individual experimentation.
 **Make sure to free the resources (`--destroy`) when you are done**, in order to minimize unncessary payments due to wasting resources (the cluster infrastructure runs on AWS).
 
 
-=== Configuration
+### Configuration
 For your own deployment, change the following settings:
 * in `helmsman-custom-private-swap.yaml`:
   * Change namespace:
@@ -35,7 +35,7 @@ For your own deployment, change the following settings:
       Set the `tag` entry to the appropriate value for your commit **TBD**
 
 
-=== Deployment
+### Deployment
 
 To deploy the cluster, run
 
@@ -58,7 +58,7 @@ helmsman -f helmsman-custom-private-swap.yaml --show-diff --destroy
 ```
 
 
-=== Interaction with the cluster
+### Interaction with the cluster
 
 The cluster is configured to offer publicly available http addresses for interaction via the `ingress` config.
 

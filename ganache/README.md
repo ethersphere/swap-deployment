@@ -1,4 +1,4 @@
-== Deployment of ganache for testing
+## Deployment of ganache for testing
 
 This folder contains some scripts to setup ganache.
 **Note: the ganache instance is shared**

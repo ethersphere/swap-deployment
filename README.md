@@ -1,7 +1,6 @@
-# swap-deployment
-= Deployment helm charts and scripts for swap-enabled Swarm clusters =
+# Deployment helm charts and scripts for swap-enabled Swarm clusters #
 
-== Overview
+## Overview
 **This repo is work in progres.**
 
 This repository contains a collection of support scripts for deployments and the setup of **swap-enabled Swarm** clusters.
@@ -20,7 +19,7 @@ This repo contains the documentation and the scripts needed for running incentiv
 At some point into the future, this will become the *main mode of operation* for Swarm nodes, at which time this repository may be reorganized or even become obsolete.
 It is a work in progress of service mainly for the incentives track of the Swarm development team.
 
-== Prerequisites
+## Prerequisites
  * Kubernetes
    For the setup and configuration of kubernetes and its `kubectl` executable, refer to [ https://github.com/ethereum/swarm-cluster/blob/master/kubernetes/USER-GUIDE.md ]
  * Helm (package manager for kubernetes)
@@ -32,10 +31,10 @@ It is a work in progress of service mainly for the incentives track of the Swarm
    ** Linux users: check first your distro's package manager, it may be supported. E.g. Arch linux/Manjaro: `yay -S helmsman-bin`
    ** The source can be found at [ https://github.com/Praqma/helmsman ]
 
-== Environments
+## Environments
 This guide distinguishes between the following environments (each one with their own kubernetes namespace):
 
-===`swap-staging`
+###`swap-staging`
 This is a *public swap-enabled* cluster.
 This means that everyone can connect to it from anywhere.
 
@@ -65,7 +64,7 @@ The blockchain used is **ropsten** - any crypto used in the context of this netw
 The `swap-staging` folder contains scripts for the deployment of this incentivized public network. 
 
 
-=== `swap-testing`
+### `swap-testing`
 This is a *private swap-enabled* cluster.
 This means that it is not meant to be accessed from outside.
 
@@ -83,7 +82,7 @@ There is one instance of ganache deployed in its own namespace. with prefunded a
 The `swap-testing` folder contains scripts for the deployment of this `master` based private network.
 
 
-=== Custom environment
+### Custom environment
 This is a *private development* cluster environment.
 It is meant to test branches *before* a merge to master.
 
@@ -101,7 +100,7 @@ The dev cluster differs from `swap-testing` only in:
 
 The `custom` folder contains sample scripts for the deployment of such dev private networks.
 
-=== ganache ===
+### ganache ###
 There is a separate ganache deployment which is **shared** between all dev clusters and the `swap-testing` clusters.
 This needs to be so because the setup of a ganache instance to work with Swarm is quite complex:
 * deploy the actual ganache instance

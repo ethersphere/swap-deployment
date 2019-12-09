@@ -1,4 +1,4 @@
-== Deployment of `swap-staging` cluster
+## Deployment of `swap-staging` cluster
 
 This folder contains the scripts for deploying the `swap-staging` public incentivized Swarm cluster.
 
