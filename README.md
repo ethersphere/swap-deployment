@@ -34,7 +34,7 @@ It is a work in progress of service mainly for the incentives track of the Swarm
 ## Environments
 This guide distinguishes between the following environments (each one with their own kubernetes namespace):
 
-###`swap-staging`
+### `swap-staging`
 This is a *public swap-enabled* cluster.
 This means that everyone can connect to it from anywhere.
 

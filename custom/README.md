@@ -46,6 +46,7 @@ helmsman -f helmsman-custom-private-swap.yaml --show-diff --apply
 To check if the deployment was successful, run
 
 `kubectl -n custom get pods` (replace `custom` with your namespace)
+
 This retrieves the list of all pods deployed in the given namespace. 
 Verify that the `STATUS` column has all nodes as `RUNNING`.
 
@@ -53,6 +54,7 @@ If there is a problem, you can try checking the individual node's logs by execut
 `kubectl -n custom logs -c swarm swarm-private-2` to get the logs for the node named `swarm-private-2` 
 
 To shutdown the cluster and free its resources, run
+
 ```
 helmsman -f helmsman-custom-private-swap.yaml --show-diff --destroy
 ```
@@ -63,22 +65,28 @@ helmsman -f helmsman-custom-private-swap.yaml --show-diff --destroy
 The cluster is configured to offer publicly available http addresses for interaction via the `ingress` config.
 
 To get a list of all publicly available http addresses of nodes:
+
 `kubectl -n custom get ingress`
 
 A typical result of this call if the cluster is deployed:
+
 `swarm-private-10   swarm-private-10-custom.stg.swarm-gateways.net   107.23.251.127,3.231.168.49,54.158.57.42   80, 443   25m`
+
 For every node deployed there should be an entry.
 
 For node `swarm-private-10`, the public endpoint is `swarm-private-10-custom.stg.swarm-gateways.net`
 
 
 To upload a file to a node, e.g. `swarm-private-10`:
+
 ` swarm --bzzapi http://swarm-10-custom.stg.swarm-gateways.net up /path/to/your/file/name.zip`
 
 Download using your favourite cli tool, e.g. `wget` or `curl`.
+
 ` wget http://swarm-24-custom.stg.swarm-gateways.net/bzz:/699736d0ebc494e1162334a427b5721b24030b123732d8f1d16e24e482ecba3b`
 
 To check if a node has any peers, it's possible to log in into a node:
+
 ```
 kubectl exec -n custom -ti swarm-private-4 -- sh
 / # geth attach /root/.ethereum/bzzd.ipc
