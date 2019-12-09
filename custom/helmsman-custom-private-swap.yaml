@@ -1,0 +1,33 @@
+settings:
+  # Name of the service account within each namespace that should be used for tiller
+  serviceAccount: "tiller"
+
+namespaces:
+  kube-system:
+  custom:
+    protected: false
+    installTiller: true 
+    useTiller: false 
+
+helmRepos:
+  stable: "https://kubernetes-charts.storage.googleapis.com"
+  incubator: "http://storage.googleapis.com/kubernetes-charts-incubator"
+  ethersphere: "https://raw.githubusercontent.com/ethersphere/helm-charts-artifacts/master/"
+
+apps:
+  # Swarm
+  private-swarm:
+    tillerNamespace: "custom"
+    namespace: "custom"
+    name: "swarm-private"
+    enabled: true
+    purge: true
+    chart: "ethersphere/swarm-private"
+    version: "0.0.5"
+    description: "(Private) Swarm cluster"
+    valuesFiles:
+      - "swarm-custom-private-swap.yaml"
+    set:
+      swarm.replicaCount: "30"
+    wait: true
+    timeout: 180

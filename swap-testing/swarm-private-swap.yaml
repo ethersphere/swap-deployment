@@ -1,0 +1,191 @@
+bootnode:
+  terminationGracePeriodSeconds: 3
+  updateStrategy:
+    type: "OnDelete"
+  config:
+    extraFlags:
+      - --ws
+      - --wsaddr=0.0.0.0
+      - --wsorigins=*
+      - --wsapi=admin,net,debug,bzz,stream,accounting
+  persistence:
+    enabled: true
+    storageClass: "gp2-delete"
+    accessMode: ReadWriteOnce
+    size: 1Gi
+  resources:
+    requests:
+      memory: 512Mi
+      cpu: null
+    limits:
+      memory: 1524Mi
+      cpu: null
+
+swarm:
+  image:
+    repository: ethersphere/swarm
+    tag: edge 
+  metricsEnabled: true
+  tracingEnabled: true
+  profilingEnabled: true
+  ganacheEnabled: false 
+  terminationGracePeriodSeconds: 3
+  imagePullPolicy: Always
+  podManagementPolicy: Parallel
+  updateStrategy:
+    type: "OnDelete"
+  config:
+    ens_api: "314159265dD8dbb310642f98f50C066173C1259b@https://cloudflare-eth.com"
+    verbosity: 5
+    debug: true
+    maxpeers: 50
+    bzznetworkid: 5  # Only network ID 5 is supported with SWAP code
+    storesize: "500000" # 500000 * 4KB = 2GB
+    extraFlags:
+      - --swap
+      - --swap-backend-url=http://ganache.ganache.svc.cluster.local:8545
+      - --swap-deposit-amount=99999999
+      - --swap-chequebook-factory=0x070055a77771f0e6741dfc6af6949a398bb3b05c
+      - --ws
+      - --ens-api=test:112234455c3a32fd11230c42e7bccd4a84e02010@http://ropsten-geth-geth.geth:8545
+      - --wsaddr=0.0.0.0
+      - --wsorigins=*
+      - --wsapi=admin,net,debug,bzz,stream,accounting,swap
+      - --store.cache.size=10000
+      - --vmodule=swarm/swap/*=5
+    podSpecificFlags:
+      swarm-private-0: "--bzzkeyhex=ee57faecd3507232bf794e4c3689e9329d89d5720fb979a07910e426b0da6ca2"
+      swarm-private-1: "--bzzkeyhex=0eb6d5457d6a01699c577df6567f63dcad0fdbacc52c3fe85e8dfce86f2a204a"
+      swarm-private-2: "--bzzkeyhex=a15672ac5fa96bf19f15613d60b4a4982ed97cf1a736dc71557b64e7b9363bbc"
+      swarm-private-3: "--bzzkeyhex=976aa1879c686733d07e9201d3a62ad95dcf78b1e438f2b74939bf7a7cd432f9"
+      swarm-private-4: "--bzzkeyhex=3f389096dc9ddd64066e0336c5da827101daa03e2ecf5873de464be3e69327f5"
+      swarm-private-5: "--bzzkeyhex=03e926dcc0739df9df1a34844c0c1e6b88f65384cc5903fca9b5d3832f4f6efd"
+      swarm-private-6: "--bzzkeyhex=7b5dee226e32c465d950e23474d19840f8f7c7663807571b98c2a9b6d4a6df3f"
+      swarm-private-7: "--bzzkeyhex=a37da95055d5edaf02feb2844ee82df13f28a6c2cbc9a2b26ceae8ff04623c15"
+      swarm-private-8: "--bzzkeyhex=64b88c789d476ace4ab87e90edf197db001e74195b39cab083635fcd6d8a9ce7"
+      swarm-private-9: "--bzzkeyhex=ad4c9d3df6dd9d78b733f386d8780158dcbdcdce496a4cfd78eeafed9c49fb19"
+      swarm-private-10: "--bzzkeyhex=ee8c2b5d0267782b5cbf1ba2f42d78151e020d13fbe3444b1d644003fa86d8c6"
+      swarm-private-11: "--bzzkeyhex=bd0f7e35740932ce5358f899870639b1d8c1277005bef28cda00d41b53d1dfa5"
+      swarm-private-12: "--bzzkeyhex=2a47ae058279225833903d7f7c6fa9eb3bb6fba85b1e3912fdb068f997ad5107"
+      swarm-private-13: "--bzzkeyhex=f609e16cde4feed97e0978e964442e42c0f923bf8a49217fa3fd20add4710024"
+      swarm-private-14: "--bzzkeyhex=cc3c4043e6d418494623f3523fdda356045b73978fb30386c04d7b4b7b158812"
+      swarm-private-15: "--bzzkeyhex=1c1cf379ac14ed85eebfee401d989eaedc2cb75fcfdaff36a6e0493539e5428e"
+      swarm-private-16: "--bzzkeyhex=34a1dd5f173219e85ce5fcf7218ef6d388b60cbebf1ffdb2a3aa31f110d25514"
+      swarm-private-17: "--bzzkeyhex=b7f6a117c8301e7f0645bb152e35ae88ce40b2831cd0fee88218906387844bad"
+      swarm-private-18: "--bzzkeyhex=db8f72350c520b87a2a5f32cf1863f2f08ef6854ec2eb4f177c6fe6af268beea"
+      swarm-private-19: "--bzzkeyhex=c1d1ddb09d771f27921659c61158e82d47f869da44fcc7b349ed4efe91aef90f"
+      swarm-private-20: "--bzzkeyhex=7f6834eb6b50ffbfe4a5a88e6cf1190b98d11877093ce29fb62f65485b957f5d"
+      swarm-private-21: "--bzzkeyhex=d468a4bfd75c64b5cdabb9ed8667fb307258bd5b383a2c53cf121297010d55c7"
+      swarm-private-22: "--bzzkeyhex=c4906bb5678d3bd79acb2badb84d05469eb1c16e3e27a891e08b23d2c8552211"
+      swarm-private-23: "--bzzkeyhex=6ddf42c395a2a50e76032d51ee4a6cef6c3df206a7ea64724c0a6bf3c8c12198"
+      swarm-private-24: "--bzzkeyhex=1a9d2dbefe2266c66ca4c95358ce144cf03b3bf251b19ca04aed95848a0c9c62"
+      swarm-private-25: "--bzzkeyhex=cbda625713f26f7c595cf46e997c548788098ef7c8b1df7b24a3d76d218d5211"
+      swarm-private-26: "--bzzkeyhex=05bc3d6d980b0ebf952c61babe49a1a24090c0b8020452407e52b4f39ec03407"
+      swarm-private-27: "--bzzkeyhex=2bcf8f703504ec90c705ad51d2b0b670e0ceeb3307b4facf9edf83bf47033f8c"
+      swarm-private-28: "--bzzkeyhex=2bdd4784da6c5c34772a42c7fd9b1643e6f772c581e2506866b3ff69484efc3e"
+      swarm-private-29: "--bzzkeyhex=eaf4a3b94e811cf71ce6dcd996fb936b59e22a869e7be25b6e61c2e1ecd481f4"
+  secrets:
+    password: qwerty
+  ingress:
+    domain: stg.swarm-gateways.net
+    enabled: true
+    tls:
+      enabled: true
+      acmeEnabled: false
+    annotations:
+      nginx.ingress.kubernetes.io/proxy-body-size: 500m
+      nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
+      nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
+      nginx.ingress.kubernetes.io/ssl-redirect: "false"
+  persistence:
+    enabled: true
+    storageClass: "gp2-delete"
+    accessMode: ReadWriteOnce
+    size: 5Gi
+  resources:
+    requests:
+      memory: 412Mi
+      cpu: null
+    limits:
+      memory: 1224Mi
+      cpu: null
+  tracingAgent:
+    resources:
+      requests:
+        memory: 64Mi
+        cpu: null
+      limits:
+        memory: 64Mi
+        cpu: null
+
+influxdb:
+  resources:
+    requests:
+      memory: 256Mi
+      cpu: null
+    limits:
+      memory: 8Gi
+      cpu: null
+  persistence:
+    enabled: true
+    accessMode: ReadWriteOnce
+    size: 30Gi
+  config:
+    meta:
+      logging_enabled: true
+    data:
+      trace_logging_enabled: true
+
+grafana:
+  datasources:
+    datasources.yaml:
+      apiVersion: 1
+      datasources:
+      - name: metrics
+        type: influxdb
+        url: http://swarm-private-influxdb:8086
+        database: metrics
+        user: swarm
+        password: swarm
+        access: proxy
+        isDefault: true
+  dashboards:
+    default:
+      smoke:
+        url: https://raw.githubusercontent.com/ethersphere/grafana-dashboards/master/smoke.json
+      ldbstore:
+        url: https://raw.githubusercontent.com/ethersphere/grafana-dashboards/master/ldbstore.json
+      swarm:
+        url: https://raw.githubusercontent.com/ethersphere/grafana-dashboards/master/swarm.json
+      upload-speed:
+        url: https://raw.githubusercontent.com/ethersphere/grafana-dashboards/master/upload-speed.json
+      sliding:
+        url: https://raw.githubusercontent.com/ethersphere/grafana-dashboards/master/smoke-sliding.json
+      kad:
+        url: https://raw.githubusercontent.com/ethersphere/grafana-dashboards/master/kad.json
+      fetchers:
+        url: https://raw.githubusercontent.com/ethersphere/grafana-dashboards/master/fetchers.json
+      timeouts:
+        url: https://raw.githubusercontent.com/ethersphere/grafana-dashboards/master/timeouts.json
+      p2p:
+        url: https://raw.githubusercontent.com/ethersphere/grafana-dashboards/master/p2p.json
+      pushsync:
+        url: https://raw.githubusercontent.com/ethersphere/grafana-dashboards/master/pushsync.json
+      runtime:
+        url: https://raw.githubusercontent.com/ethersphere/grafana-dashboards/master/runtime.json
+      pss:
+        url: https://raw.githubusercontent.com/ethersphere/grafana-dashboards/master/pss.json
+
+jaeger:
+  resources:
+    requests:
+      memory: 2000Mi
+      cpu: null
+    limits:
+      memory: 5000Mi
+      cpu: null
+  config:
+    env:
+      SPAN_STORAGE_TYPE: memory
+    args:
+      - "--memory.max-traces=300000"
