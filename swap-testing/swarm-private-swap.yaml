@@ -175,6 +175,8 @@ grafana:
         url: https://raw.githubusercontent.com/ethersphere/grafana-dashboards/master/runtime.json
       pss:
         url: https://raw.githubusercontent.com/ethersphere/grafana-dashboards/master/pss.json
+      accounting:
+        url: https://raw.githubusercontent.com/ethersphere/grafana-dashboards/master/accounting.json
 
 jaeger:
   resources:
