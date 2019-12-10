@@ -21,7 +21,7 @@ It is a work in progress of service mainly for the incentives track of the Swarm
 
 ## Prerequisites
  * Kubernetes
-   For the setup and configuration of kubernetes and its `kubectl` executable, refer to [ https://github.com/ethereum/swarm-cluster/blob/master/kubernetes/USER-GUIDE.md ]
+   For the setup and configuration of kubernetes and its `kubectl` executable, refer to [ https://github.com/ethersphere/swarm-kubernetes/blob/master/USER-GUIDE.md ]
  * Helm (package manager for kubernetes)
    Installation instructions in the same guide above
  * Helmsman
