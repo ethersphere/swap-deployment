@@ -26,14 +26,39 @@ For your own deployment, change the following settings:
      This defines the number of nodes for your deployment; the default is 30, but you can change this value to your needs
 
 * in `swarm-custom-private-swap.yaml`
-  *  ```
+   * Set the Swarm image to the appropriate docker build image for your commit. 
+     You need to have an account on docker, and then push your own image to docker:
+
+     `docker login`
+
+   *  Go to the root of your Swarm Go path, .e.g `/home/you/go/src/github.com/ethersphere/swarm`, and then run:
+
+      `docker build -t <docker-username>/swarm:<your_tag> .` (Note the DOT at the end), for example:
+
+      `docker build -t holisticode/metrics .`
+
+   *  Then, push the image to docker:
+
+      `docker push <docker-username>/swarm:<your_tag>`, for example: `docker push holisticode/metrics`
+
+
+   * Finally, replace the image with the correct build:
+
+      ```
       swarm:
         image:
           repository: ethersphere/swarm
           tag: edge
       ```
-      Set the `tag` entry to the appropriate value for your commit **TBD**
+      
+      replace with
 
+      ```
+      swarm:
+        image:
+          repository: <docker-username>/swarm
+          tag: <your-tag> 
+      ```
 
 ### Deployment
 
