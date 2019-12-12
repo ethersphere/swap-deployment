@@ -44,7 +44,7 @@ swarm:
     extraFlags:
       - --swap
       - --swap-backend-url=http://ganache.ganache.svc.cluster.local:8545
-      - --swap-deposit-amount=99999999
+      - --swap-deposit-amount=50000000000000000
       - --swap-chequebook-factory=0x070055a77771f0e6741dfc6af6949a398bb3b05c
       - --ws
       - --ens-api=test:112234455c3a32fd11230c42e7bccd4a84e02010@http://ropsten-geth-geth.geth:8545

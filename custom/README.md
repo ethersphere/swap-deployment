@@ -8,6 +8,11 @@ The current node config version is compatible with the ganache instance deployed
 
 Should the ganache instance be changed (e.g. different contract data), most likely the ganache installation needs to be updated, resulting in a different contract address, which needs to be adjusted at the above flag.
 
+### Smoke test
+This helmsman script also deploys a **smoke** test: It runs every 4 minutes according to the `schedule` param in `private-smoke-single.yaml`. This means that every 4 minutes, a file of 40MB is uploaded to a node (`swarm-private-0`) and then downloaded from a **random** node.
+
+If you don't want this to happen, set the `enabled:` entry in the `private-smoke-single` section of `helmsman-custom-private-swap.yaml` to `false.
+
 ### IMPORTANT
 A custom deployment is meant for an individual test only, for example before merging to `master`, or individual experimentation.
 **Make sure to free the resources (`--destroy`) when you are done**, in order to minimize unncessary payments due to wasting resources (the cluster infrastructure runs on AWS).

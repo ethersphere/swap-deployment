@@ -92,3 +92,6 @@ config:
     - addr: "0x025F940638f81abF4c9eEb25aee517cbf38E6E32"
       privKey: "0xeaf4a3b94e811cf71ce6dcd996fb936b59e22a869e7be25b6e61c2e1ecd481f4"
       wei: "100000000000000000000"
+  args:
+    - "--g=600000000"
+
