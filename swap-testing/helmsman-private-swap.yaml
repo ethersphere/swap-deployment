@@ -31,3 +31,19 @@ apps:
       swarm.replicaCount: "30"
     wait: true
     timeout: 180
+
+# Smoke test
+  private-smoke-single:
+    tillerNamespace: "swap-testing"
+    namespace: "swap-testing"
+    name: "private-smoke-single"
+    enabled: true
+    purge: true
+    chart: "ethersphere/smoke"
+    version: "0.0.2"
+    description: "(Private) Smoke test: Upload and sync"
+    valuesFiles:
+      - "private-smoke-single.yaml"
+    set:
+      smoke.config.swarmReplicas: "30"
+    wait: false
