@@ -44,7 +44,7 @@ For your own deployment, change the following settings:
 
    *  Then, push the image to docker:
 
-      `docker push <docker-username>/swarm:<your_tag>`, for example: `docker push holisticode/metrics`
+      `docker push <docker-username>/swarm:<your_tag>`, for example: `docker push holisticode/swarm:metrics`
 
 
    * Finally, replace the image with the correct build:
